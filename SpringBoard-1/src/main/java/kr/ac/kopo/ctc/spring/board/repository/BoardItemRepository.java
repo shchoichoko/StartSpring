@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import kr.ac.kopo.ctc.spring.board.domain.BoardItem;
 
 @Repository
-public interface BoardItemRepository extends JpaRepository<BoardItem, Long>, JpaSpecificationExecutor<BoardItem> {
+public interface BoardItemRepository extends JpaRepository<BoardItem, Integer>, JpaSpecificationExecutor<BoardItem> {
 	
 	Optional<BoardItem> findOneByAuthor(String author);
 	
@@ -24,6 +24,6 @@ public interface BoardItemRepository extends JpaRepository<BoardItem, Long>, Jpa
 	
 	Page<BoardItem> findByTitleContaining(String title, Pageable pageable);
 	
-	List<BoardItem> deleteById(long id);
+	List<BoardItem> deleteById(int id);
 	
 }

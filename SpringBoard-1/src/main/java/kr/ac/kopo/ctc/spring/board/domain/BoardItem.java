@@ -5,9 +5,13 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 // hibernate가 구분하기 위해 id는 꼭 여기서 import하기
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class BoardItem implements Cloneable, Serializable{
@@ -16,9 +20,9 @@ public class BoardItem implements Cloneable, Serializable{
 	
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
-	private long id;
+	private Integer id;
 	@Column
 	private String author;
 	@Column
@@ -30,6 +34,24 @@ public class BoardItem implements Cloneable, Serializable{
 	@Column
 	private String content;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="boardgroup_id")
+	private BoardGroup boardgroup;
+	/*
+	public BoardItem(String author, int no, String title, Date date, String content) {
+		this.author = author;
+		this.no = no;
+		this.title = title;
+		this.date = date;
+		this.content = content;
+	}
+	*/
+	public BoardGroup getBoardgroup() {
+		return boardgroup;
+	}
+	public void setBoardgroup(BoardGroup boardgroup) {
+		this.boardgroup = boardgroup;
+	}
 	public String getAuthor() {
 		return author;
 	}
@@ -42,13 +64,10 @@ public class BoardItem implements Cloneable, Serializable{
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getTitle() {

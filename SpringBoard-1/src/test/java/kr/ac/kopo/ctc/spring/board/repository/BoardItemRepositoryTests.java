@@ -37,13 +37,13 @@ class BoardItemRepositoryTests {
 	//delete
 	@Test
 	void deleteById() {
-		List<BoardItem> boardItem = boardItemRepository.deleteById(1L);
+		List<BoardItem> boardItem = boardItemRepository.deleteById(1);
 	}
 	//create
 	@Test
 	void createContent() {
 		BoardItem boardItem = new BoardItem();
-		boardItem.setId(5L);
+		boardItem.setId(5);
 		boardItem.setAuthor("손흥민");
 		boardItem.setContent("대승우 가즈아");
 		boardItem.setTitle("득점왕 주현");
@@ -54,7 +54,7 @@ class BoardItemRepositoryTests {
 	//update
 	@Test
 	void update() {
-		Optional<BoardItem> boardItem = boardItemRepository.findById(2L);
+		Optional<BoardItem> boardItem = boardItemRepository.findById(2);
 		boardItem.ifPresent(selectBoardItem -> {
 			selectBoardItem.setAuthor("홍길동");
 			selectBoardItem.setDate(new Date());

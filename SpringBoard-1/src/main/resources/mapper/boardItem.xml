@@ -49,7 +49,7 @@
 		WHERE id = #{id}
 
 	</update>
-	<delete id="deleteById" parameterType="Long">
+	<delete id="deleteById" parameterType="int">
 
 		DELETE FROM board_item
 

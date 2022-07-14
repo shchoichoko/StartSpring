@@ -23,7 +23,7 @@ public class BoardItemMapperTest {
 	// selectOne
 	@Test
 	void selectOne() {
-		BoardItem boardItems = boardItemMapper.findOneById(1L);
+		BoardItem boardItems = boardItemMapper.findOneById(1);
 	}
 	@Test
 	public void findAll() {
@@ -49,7 +49,7 @@ public class BoardItemMapperTest {
 	@Test
 	void insertBoardItem() {
 		BoardItem boardItem = new BoardItem();
-		boardItem.setId(7L);
+		boardItem.setId(7);
 		boardItem.setAuthor("손흥민");
 		boardItem.setTitle("득점왕 주현");
 		boardItem.setContent("오늘은 국밥");
@@ -60,7 +60,7 @@ public class BoardItemMapperTest {
 	@Test
 	void update() {
 		BoardItem boardItem = new BoardItem();
-		boardItem.setId(1L);
+		boardItem.setId(1);
 		boardItem.setAuthor("홍길동");
 		boardItem.setTitle("업데이트제목");
 		boardItemMapper.updateAuthor(boardItem);
@@ -78,7 +78,7 @@ public class BoardItemMapperTest {
 	@Test
 	void deleteOne() {
 		BoardItem boardItem = new BoardItem();
-		boardItem.setId(2L);
+		boardItem.setId(2);
 		boardItemMapper.deleteById(boardItem);
 	}
 	*/

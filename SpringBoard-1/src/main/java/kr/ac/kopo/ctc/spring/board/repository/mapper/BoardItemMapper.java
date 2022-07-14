@@ -11,7 +11,7 @@ import kr.ac.kopo.ctc.spring.board.domain.BoardItem;
 @Mapper
 @Repository
 public interface BoardItemMapper {
-	BoardItem findOneById(Long id);
+	BoardItem findOneById(int i);
 	List<BoardItem> findAll();
 	List<BoardItem> findAllByCondition(BoardItem boarditem, RowBounds rowBounds);
 	int insertBoardItem(Long id, String author,String title,String content);
