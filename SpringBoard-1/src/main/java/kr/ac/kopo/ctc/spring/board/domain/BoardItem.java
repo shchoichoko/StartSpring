@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class BoardItem implements Cloneable, Serializable{
 
@@ -33,7 +35,7 @@ public class BoardItem implements Cloneable, Serializable{
 	private Date date;
 	@Column
 	private String content;
-	
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="boardgroup_id")
 	private BoardGroup boardgroup;
