@@ -16,6 +16,8 @@ public interface BoardItemRepository extends JpaRepository<BoardItem, Integer>, 
 	
 	Optional<BoardItem> findOneByAuthor(String author);
 	
+	List<BoardItem> findAllById(Integer id);
+	
 	Page<BoardItem> findAllByAuthor(String author, Pageable pageable);
 	
 	List<BoardItem> findAllByTitle(String title);
@@ -27,4 +29,5 @@ public interface BoardItemRepository extends JpaRepository<BoardItem, Integer>, 
 	List<BoardItem> deleteById(int id);
 	
 	List<BoardItem> findAllByBoardgroup_id(int id);
+	
 }

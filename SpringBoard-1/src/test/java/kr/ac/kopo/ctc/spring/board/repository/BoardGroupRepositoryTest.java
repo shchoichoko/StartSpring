@@ -30,18 +30,18 @@ class BoardGroupRepositoryTest {
 	@Test
 	void createBoardMember() {
 		BoardGroup bg = new BoardGroup();
-		bg.setName("손흥민2");
+		bg.setName("손흥민3");
 		bgr.save(bg);
 		
 		BoardItem bi1 = new BoardItem();
-		bi1.setAuthor("홍길동작성");
+		bi1.setAuthor("홍길동작성2");
 		bi1.setTitle("도적질");
 		bi1.setContent("동에번쩍 서에번쩍");
 		bi1.setBoardgroup(bg);
 		bir.save(bi1);
 		
 		BoardItem bi2 = new BoardItem();
-		bi2.setAuthor("차두리");
+		bi2.setAuthor("차두리2");
 		bi2.setTitle("달리기");
 		bi2.setContent("분노의 질주");
 		bi2.setBoardgroup(bg);

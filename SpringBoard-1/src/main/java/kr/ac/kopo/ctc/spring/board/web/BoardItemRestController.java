@@ -25,29 +25,29 @@ import kr.ac.kopo.ctc.spring.board.domain.BoardItem;
 import kr.ac.kopo.ctc.spring.board.repository.BoardGroupRepository;
 import kr.ac.kopo.ctc.spring.board.repository.BoardItemRepository;
 
-
+/*
 @RestController
 @RequestMapping(value="/rest")
 public class BoardItemRestController {
-	
+		
 	@Autowired
 	BoardGroupRepository boardGroupRepository;
 	@Autowired
 	BoardItemRepository boardItemRepository;
-	
+
 	@RequestMapping(value="/boardItem1")
 	public ResponseEntity<BoardItem> boardItem1() {
 		BoardItem boardItem = boardItemRepository.findById(1).get();		
 		return ResponseEntity.ok(boardItem);
 
-	}
+	}	
 	
 	@RequestMapping(value="/boardItems1")
 	public ResponseEntity<List<BoardItem>> boardItems1() {
 		List<BoardItem> boardItem = boardItemRepository.findAllByBoardgroup_id(2);
 		return	ResponseEntity.ok(boardItem);
 	}
-	/*
+	
 	@RequestMapping(value="/boardItem2")
 	public BoardItem boardItem2() {
 		BoardItem boardItem = new BoardItem();
@@ -71,8 +71,9 @@ public class BoardItemRestController {
 		boardItems.add(boardItem2);
 		return	boardItems;
 	}
-	*/
+	
 	
 
 	
 }	
+*/
