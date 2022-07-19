@@ -27,7 +27,7 @@ class BoardItemRepositoryTests {
 	//selectOne
 	@Test
 	void selectOne() {
-		Optional<BoardItem> boardItemOpt = boardItemRepository.findOneByAuthor("안재형");
+		List<BoardItem> boardItemOpt = boardItemRepository.findOneByName("안재형");
 	}
 	//selectAll
 	@Test
@@ -43,11 +43,9 @@ class BoardItemRepositoryTests {
 	@Test
 	void createContent() {
 		BoardItem boardItem = new BoardItem();
-		boardItem.setId(5);
-		boardItem.setAuthor("손흥민");
+		boardItem.setName("손흥민");
 		boardItem.setContent("대승우 가즈아");
 		boardItem.setTitle("득점왕 주현");
-		boardItem.setNo(5);
 		boardItem.setDate(new Date());
 		boardItemRepository.save(boardItem);
 	}
@@ -56,7 +54,7 @@ class BoardItemRepositoryTests {
 	void update() {
 		Optional<BoardItem> boardItem = boardItemRepository.findById(2);
 		boardItem.ifPresent(selectBoardItem -> {
-			selectBoardItem.setAuthor("홍길동");
+			selectBoardItem.setName("홍길동");
 			selectBoardItem.setDate(new Date());
 			selectBoardItem.setNo(4);
 			selectBoardItem.setTitle("업데이트제목");

@@ -29,19 +29,19 @@ public class BoardItemMapperTest {
 	public void findAll() {
 		List<BoardItem> boardItems = boardItemMapper.findAll();
 		for (BoardItem boardItem : boardItems) {
-			System.out.println(boardItem.getAuthor());
+			System.out.println(boardItem.getName());
 		}
 	}
 	@Test
 	public void findAllByCondition() {
 		BoardItem boardItems = new BoardItem();
-		boardItems.setAuthor("최수혁");
+		boardItems.setName("최수혁");
 
 		RowBounds rowBounds = new RowBounds(0, 10);
 
 		List<BoardItem> boardItems2 = boardItemMapper.findAllByCondition(boardItems, rowBounds);
 		for (BoardItem boardItem : boardItems2) {
-			System.out.println(boardItem.getAuthor());
+			System.out.println(boardItem.getName());
 		}
 	}
 	/*

@@ -25,16 +25,21 @@ public class BoardItem implements Cloneable, Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private Integer id;
+	
 	@Column
-	private String author;
+	private String name;
+	
 	@Column
-	private int no;
+	private Integer no;
+	
 	@Column
 	private String title;
 	@Column
 	private Date date;
 	@Column
 	private String content;
+	@Column
+	private Integer viewCnt;
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="boardgroup_id")
@@ -54,16 +59,16 @@ public class BoardItem implements Cloneable, Serializable{
 	public void setBoardgroup(BoardGroup boardgroup) {
 		this.boardgroup = boardgroup;
 	}
-	public String getAuthor() {
-		return author;
+	public String getName() {
+		return name;
 	}
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public int getNo() {
+	public Integer getNo() {
 		return no;
 	}
-	public void setNo(int no) {
+	public void setNo(Integer no) {
 		this.no = no;
 	}
 	public Integer getId() {
@@ -89,6 +94,12 @@ public class BoardItem implements Cloneable, Serializable{
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public Integer getViewCnt() {
+		return viewCnt;
+	}
+	public void setViewCnt(Integer viewCnt) {
+		this.viewCnt = viewCnt;
 	}
 	
 }

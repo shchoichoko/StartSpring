@@ -14,11 +14,11 @@ import kr.ac.kopo.ctc.spring.board.domain.BoardItem;
 @Repository
 public interface BoardItemRepository extends JpaRepository<BoardItem, Integer>, JpaSpecificationExecutor<BoardItem> {
 	
-	Optional<BoardItem> findOneByAuthor(String author);
+	List<BoardItem> findOneByName(String name);
 	
 	List<BoardItem> findAllById(Integer id);
 	
-	Page<BoardItem> findAllByAuthor(String author, Pageable pageable);
+	Page<BoardItem> findAllByName(String name, Pageable pageable);
 	
 	List<BoardItem> findAllByTitle(String title);
 	

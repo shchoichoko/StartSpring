@@ -11,7 +11,6 @@
 
 	<form method="post" action="#">
 		<table cellspacing=1 width=650 border="1" class="table">
-			<c:forEach var="boardItem" items="${boardItems}">
 			<tr>
 				<td style="text-align: center;"><b>글번호</b></td>
 				<td>${boardItem.no}</td>
@@ -26,7 +25,7 @@
 			</tr>
 			<tr>
 				<td style="text-align: center;"><b>작성자</b></td>
-				<td>${boardItem.author}</td>
+				<td>${boardItem.name}</td>
 			</tr>
 			<tr>
 				<td style="text-align: center;"><b>Hits</b></td>
@@ -38,7 +37,6 @@
 				<textarea style="width: 98%; height: 90%;">${boardItem.content}</textarea></td>
 			</tr>
 			<tr>
-			</c:forEach>	
 		</table>
 		<center>
 			<table width="650">

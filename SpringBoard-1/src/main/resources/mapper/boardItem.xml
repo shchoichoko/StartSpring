@@ -34,7 +34,7 @@
 		</if>
 	</sql>
 	<insert id="insertBoardItem">
-		INSERT INTO board_item(id, author, title, content)
+		INSERT INTO board_item(id, name, title, content)
 		VALUES (#{id},
 		#{author},#{title},#{content})
 	</insert>
@@ -43,7 +43,7 @@
 
 		UPDATE board_item
 
-		SET author =#{author}, title =
+		SET name =#{name}, title =
 		#{title}
 
 		WHERE id = #{id}

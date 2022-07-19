@@ -21,15 +21,15 @@ td {
 	<table cellpadding="0" cellspacing="0" border="1" width="350"
 		align="center">
 		<tr>
-			<td width="50">ID</td>
-			<td width="150">제목</td>
+			<td width="60">글번호</td>
+			<td width="140">제목</td>
 			<td width="100">작성자</td>
 		</tr>
 		<c:forEach var="boardItem" items="${boardItems}">
 			<tr>
 				<td>${boardItem.id}</td>
 				<td><a href="./oneView?id=${boardItem.id}">${boardItem.title}</a></td>
-				<td>${boardItem.author}</td>
+				<td>${boardItem.name}</td>
 			</tr>
 		</c:forEach>
 	</table>

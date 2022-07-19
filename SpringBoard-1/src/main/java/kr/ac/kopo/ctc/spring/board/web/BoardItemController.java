@@ -30,23 +30,35 @@ public class BoardItemController {
 	private BoardItemServiceImpl boardItemServiceImpl;
 	@Autowired
 	private BoardItemRepository boardItemRepository;
-
+	//글 목록 보기
 	@RequestMapping(value = "/showList")
 	public String showLists(Model model) {
 		model.addAttribute("boardItems", boardItemServiceImpl.showLists());
 		return "list";
 	}
 	
+	//글 하나 보기
 	@RequestMapping(value = "/oneView")
 	public String goOneView(Model model, HttpServletRequest request) {
 		String id = request.getParameter("id");
-		//boardItemRepository.findOneById(Integer.parseInt(id));
-		model.addAttribute("boardItems",boardItemServiceImpl.showOneView(Integer.parseInt(id)));
+		List<BoardItem> boardItem = boardItemServiceImpl.showOneView(Integer.parseInt(id));
+		model.addAttribute("boardItem",boardItem.get(0));
 		return "oneView";
 	}
 	
+	//글작성 하러 가기
 	@RequestMapping(value = "/write")
 	public String goWrite(Model model) {
+				
+		model.addAttribute("namename","홍길동");
+		//model.addAttribute("boardItems",boardItemServiceImpl.showOneView(Integer.parseInt(id)));
+		return "write";
+	}
+	
+	//글 작성 확정하기
+	@RequestMapping(value = "/confirmWrite")
+	public String confirmWrite(Model model, HttpServletRequest request) {
+		
 		model.addAttribute("namename","홍길동");
 		//model.addAttribute("boardItems",boardItemServiceImpl.showOneView(Integer.parseInt(id)));
 		return "write";
@@ -84,7 +96,7 @@ public class BoardItemController {
 
 	@RequestMapping(value = "/modelAttribute")
 	public String modelAttribute(Model model, @ModelAttribute BoardItem boardItem) {
-		model.addAttribute("name", boardItem.getAuthor());
+		model.addAttribute("name", boardItem.getName());
 		return "hello";
 	}
 
@@ -96,7 +108,7 @@ public class BoardItemController {
 
 	@RequestMapping(value = "/requestBody2")
 	public String requestBody2(Model model, @RequestBody BoardItem boardItem) {
-		model.addAttribute("name", boardItem.getAuthor());
+		model.addAttribute("name", boardItem.getName());
 		return "hello";
 	}
 }

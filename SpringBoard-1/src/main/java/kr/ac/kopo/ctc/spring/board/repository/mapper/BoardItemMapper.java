@@ -14,7 +14,7 @@ public interface BoardItemMapper {
 	BoardItem findOneById(int i);
 	List<BoardItem> findAll();
 	List<BoardItem> findAllByCondition(BoardItem boarditem, RowBounds rowBounds);
-	int insertBoardItem(Long id, String author,String title,String content);
+	int insertBoardItem(Integer id, String name,String title,String content);
 	int updateAuthor(BoardItem boarditem);
 	int deleteById(BoardItem boarditem);
 	List<BoardItem> searchTitle(BoardItem boarditem);
