@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
 <html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
@@ -15,10 +15,8 @@
 
     <div class="row">
         <div class="col">
-            <button class="btn btn-primary float-end"
-                    onclick="location.href='boardWrite.html'"
-                    th:onclick="|location.href='@{/board/write}'|"
-                    type="button">글 등록</button>
+            <button  onclick="location.href='write.jsp'"
+                    th:onclick="|location.href='@{/forum/goWrite}'|">글 등록</button>
         </div>
         <br>
     </div>
@@ -37,17 +35,16 @@
 
             <tbody>
 
-			<c:forEach var="boardItem" items="${boardItems}">
-            <tr>
-                <td style="text-align: center" th:text="${board.id}"></td>
+            <tr th:each="forum : ${forumList}">
+                <td style="text-align: center" th:text="${forum.id}"></td>
                 <td>
-                    <a href="@{/board/view(id=${board.id})}"></a>
+                    <a th:text="${forum.title}" th:href="@{/forum/showOneForum(id=${forum.id})}"></a>
                 </td>
-                <td style="text-align: center" th:text="${board.writer}"></td>
-                <td style="text-align: center" th:text="${board.time}"></td>
-                <td style="text-align: center" th:text="${board.countView}"></td>
+                <td style="text-align: center" th:text="${forum.writer}"></td>
+                <td style="text-align: center" th:text="${forum.time}"></td>
+                <td style="text-align: center" th:text="${forum.countView}"></td>
             </tr>
-			</c:forEach>
+
             </tbody>
         </table>
     </div><br>
@@ -56,7 +53,7 @@
 
     <div id="pageNum" >
 
-        <a th:href="@{/board/list(page = ${ppPage - 1})}"> << </a>
+        <a th:href="@{/forum/forumList(page = ${ppPage - 1})}"> << </a>
         <a th:if="${pPage == 1}" th:href="@{/board/list(page = ${pPage - 1})}"> < </a>
         <a th:if="${pPage > pageSize}" th:href="@{/board/list(page = ${startPage}-10 -1)}"> < </a>
             <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">

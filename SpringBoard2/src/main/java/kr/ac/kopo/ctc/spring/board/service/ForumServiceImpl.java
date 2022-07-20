@@ -3,17 +3,15 @@ package kr.ac.kopo.ctc.spring.board.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.ctc.spring.board.domain.Forum;
 import kr.ac.kopo.ctc.spring.board.repository.ForumRepository;
-
+@Service
 public class ForumServiceImpl implements ForumService {
 
 	@Autowired
 	ForumRepository forumRepository;
-	
-	@Autowired
-	ForumService forumService;
 	
 	@Override
 	public void write(Forum forum) {
@@ -49,9 +47,9 @@ public class ForumServiceImpl implements ForumService {
 	public Page<Forum> checkKeyword(String keyword, Pageable pageable) {
 		Page<Forum> list = null;
 		if(keyword == null) {
-			list = forumService.forumListPage(pageable);
+			list = forumListPage(pageable);
 		} else {
-			list = forumService.forumSearchInList(keyword, pageable);
+			list = forumSearchInList(keyword, pageable);
 		}
 		return null;
 	}
@@ -64,7 +62,8 @@ public class ForumServiceImpl implements ForumService {
 		} else if(forum.getContent().isEmpty()) {
 			checkResult = "내용을 입력해주세요";
 		} else {
-			forumService.write(forum);
+			forum.setCountView(0);
+			write(forum);
 			checkResult = "작성이 완료되었습니다.";
 		}
 		return checkResult;

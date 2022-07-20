@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
 </head>
 
-<script th:inline="javascript">
+ <script type="text/javascript"> 
 
 
-  const message = [[${message}]];
+  const message = ${message};
   alert(message);
 
-  location.replace([[${searchUrl}]]);
+  location.replace(${url});
 
 </script>
 

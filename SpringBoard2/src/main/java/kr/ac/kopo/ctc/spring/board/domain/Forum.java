@@ -49,7 +49,7 @@ public class Forum {
 	@Column(columnDefinition = "TEXT")
 	private String content;
 	
-	@Column(columnDefinition = "integer default 0", nullable = false)
+	@Column(name="countView")
 	private Integer countView;
 
 	@Column

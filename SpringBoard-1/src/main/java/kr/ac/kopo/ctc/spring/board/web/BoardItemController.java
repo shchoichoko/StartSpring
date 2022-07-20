@@ -30,6 +30,7 @@ public class BoardItemController {
 	private BoardItemServiceImpl boardItemServiceImpl;
 	@Autowired
 	private BoardItemRepository boardItemRepository;
+	
 	//글 목록 보기
 	@RequestMapping(value = "/showList")
 	public String showLists(Model model) {
