@@ -1,41 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>±Û ÀÛ¼º ÆäÀÌÁö</title>
+<meta charset="utf-8">
+<title>ê¸€ ìž‘ì„± íŽ˜ì´ì§€</title>
 </head>
 <body>
-<h3>±Û ÀÛ¼º ÆäÀÌÁöÀÔ´Ï´Ù.</h3>
+<h3>ê¸€ ìž‘ì„± íŽ˜ì´ì§€ìž…ë‹ˆë‹¤.</h3>
 <div class="container">
 
     <div class="py-5 text-center">
-        <h2>±Û µî·Ï</h2>
+        <h2>ê¸€ ë“±ë¡</h2>
     </div>
 
     <form action="/forum/confirmWrite" method="post" enctype="multipart/form-data">
 
 
         <div>
-            <label>Á¦¸ñ</label>
-            <input name="title" type="text" class="form-control" placeholder="Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä.">
+            <label>ì œëª©</label>
+            <input name="title" type="text" class="form-control" placeholder="ì œëª©ì„ ìž…ë ¥í•˜ì„¸ìš”.">
 
         </div>
         <div>
-            <label>ÀÛ¼ºÀÚ</label>
-            <input name="author" type="text" class="form-control" placeholder="ÀÛ¼ºÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.">
+            <label>ìž‘ì„±ìž</label>
+            <input name="author" type="text" class="form-control" placeholder="ìž‘ì„±ìžë¥¼ ìž…ë ¥í•˜ì„¸ìš”.">
         </div>
         <div>
-            <label>³»¿ë</label>
-            <textarea cols="150" rows="10" id="contents" name="content" class="form-control" placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä."></textarea>
+            <label>ë‚´ìš©</label>
+            <textarea cols="150" rows="10" id="contents" name="content" class="form-control" placeholder="ë‚´ìš©ì„ ìž…ë ¥í•˜ì„¸ìš”."></textarea>
         </div>
         <input type="hidden" value=0>
         <hr class="my-4">
 
         <div class="row">
             <div class="col">
-                <button type="submit">ÀÛ¼º</button>
+                <button type="submit">ìž‘ì„±</button>
             </div>
         </div>
 

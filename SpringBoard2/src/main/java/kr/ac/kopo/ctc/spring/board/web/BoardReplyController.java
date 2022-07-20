@@ -32,17 +32,16 @@ public class BoardReplyController {
 	private ForumService forumService;
 	
 	//글보기에서 댓글 작성하기 눌렀을때 실행
-	@RequestMapping(value = "forum/showOneForum/replyWrite")
+	@RequestMapping(value = "/replyWrite")
 	public String replyWrite(@ModelAttribute BoardReply boardReply, Integer id, Model model) {
 		
-		boardReplyService.boardReplyWrite(boardReply, id);
 		List<BoardReply> boardReplyList = boardReplyService.getReplyBoardID(id);
 		model.addAttribute("boardReplyList", boardReplyList);
 		model.addAttribute("forum",forumService.forumView(id));
 		return "showOneForum";
 	}
 	
-	@RequestMapping(value = "forum/showOnForum/replyDelete")
+	@RequestMapping(value = "replyDelete")
 	public String deleteReply(@ModelAttribute BoardReply boardReply) {
 		boardReplyService.replyDelete(boardReply);
 		return "showOneForum";

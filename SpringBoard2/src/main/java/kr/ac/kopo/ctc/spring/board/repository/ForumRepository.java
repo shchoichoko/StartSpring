@@ -9,11 +9,13 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.ac.kopo.ctc.spring.board.domain.Forum;
 
 @Repository
 public interface ForumRepository extends JpaRepository<Forum, Integer> {
+	@Transactional
     @Modifying
     @Query("update forum f set f.countView = f.countView + 1 where f.id = :id")
     int updateView(@Param("id") Integer id);

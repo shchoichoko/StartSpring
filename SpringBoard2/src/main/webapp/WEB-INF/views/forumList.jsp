@@ -1,22 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
 <div class="container" style="max-width: 1000px">
     <div class="py-5 text-center">
-        <h2>°Ô½ÃÆÇ</h2>
+        <h2>ê²Œì‹œíŒ</h2>
     </div>
 
     <div class="row">
         <div class="col">
-            <button  onclick="location.href='write.jsp'"
-                    th:onclick="|location.href='@{/forum/goWrite}'|">±Û µî·Ï</button>
+            <a href="/forum/goWrite"><button>ê¸€ ë“±ë¡</button></a>
         </div>
         <br>
     </div>
@@ -25,39 +24,40 @@
         <table class="table">
             <thead>
             <tr style="text-align: center">
-                <th>±Û¹øÈ£</th>
-                <th>Á¦¸ñ</th>
-                <th>ÀÛ¼ºÀÚ</th>
-                <th>µî·ÏÀÏ</th>
-                <th>Á¶È¸¼ö</th>
+                <th>ê¸€ë²ˆí˜¸</th>
+                <th>ì œëª©</th>
+                <th>ìž‘ì„±ìž</th>
+                <th>ë“±ë¡ì¼</th>
+                <th>ì¡°íšŒìˆ˜</th>
             </tr>
             </thead>
 
             <tbody>
-
-            <tr th:each="forum : ${forumList}">
-                <td style="text-align: center" th:text="${forum.id}"></td>
+			<c:forEach var="forum" items="${forumList.content}">
+            <tr>
+                <td style="text-align: center">${forum.id}</td>
                 <td>
-                    <a th:text="${forum.title}" th:href="@{/forum/showOneForum(id=${forum.id})}"></a>
+                    <a href="/forum/showOneForum/${forum.id}"> ${forum.title} </a>
                 </td>
-                <td style="text-align: center" th:text="${forum.writer}"></td>
-                <td style="text-align: center" th:text="${forum.time}"></td>
-                <td style="text-align: center" th:text="${forum.countView}"></td>
+                <td style="text-align: center">${forum.author}</td>
+                <td style="text-align: center">${forum.date}</td>
+                <td style="text-align: center">${forum.countView}</td>
             </tr>
+           	</c:forEach>
+
 
             </tbody>
         </table>
     </div><br>
 
-    <!--  Pagination  -->
-
+    <!--  Pagination    
     <div id="pageNum" >
 
-        <a th:href="@{/forum/forumList(page = ${ppPage - 1})}"> << </a>
-        <a th:if="${pPage == 1}" th:href="@{/board/list(page = ${pPage - 1})}"> < </a>
-        <a th:if="${pPage > pageSize}" th:href="@{/board/list(page = ${startPage}-10 -1)}"> < </a>
-            <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
-                <!--    µ¥ÀÌÅÍ°¡ ¾Æ¿¹ ¾øÀ» ¶§´Â 1¸¸ Ç¥½ÃÇÏµµ·Ï ÇÏ±â À§ÇØ¼­     -->
+        <a c:href="@{/forum/forumList(page = ${ppPage - 1})}"> << </a>
+        <a c:if="${pPage == 1}" th:href="@{/board/list(page = ${pPage - 1})}"> < </a>
+        <a c:if="${pPage > pageSize}" th:href="@{/board/list(page = ${startPage}-10 -1)}"> < </a>
+            <th:block th:each="page : ${numbers.sequence(startPage, endPage)}">
+                 ë°ì´í„°ê°€ ì•„ì˜ˆ ì—†ì„ ë•ŒëŠ” 1ë§Œ í‘œì‹œí•˜ë„ë¡ í•˜ê¸° ìœ„í•´ì„œ    
                 <a th:if="${page == 0}" th:href="@{/board/list(page = ${page - 1})}" ></a>
                 <a th:if="${page != 0 && page != nowPage}" th:href="@{/board/list(page = ${page - 1})}" th:text="${page}"></a>
                 <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
@@ -69,12 +69,15 @@
 
         <br>
     </div>
+
+    
     <div id="searchBlock">
-        <form th:action="@{/board/list}" method="get">
+        <form action="@{/showForumList}" method="post">
             <br><input type="text" name="searchKeyword">
-            <button type="submit">°Ë»ö</button>
+            <button type="submit">ê²€ìƒ‰</button>
         </form>
     </div>
+      -->
 </div>
 </body>
 </html>

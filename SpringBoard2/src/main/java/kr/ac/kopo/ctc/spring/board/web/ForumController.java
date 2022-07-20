@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -50,7 +51,7 @@ public class ForumController {
 	
 	// 글 목록 페이지
 	// 보류!
-	@RequestMapping(value = "/showForumList")
+	@GetMapping(value = {"/showForumList/{searchKeyword}","/showForumList"})
 	public String forumList(Model model,
 			@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
 			String searchKeyword) {
@@ -95,8 +96,9 @@ public class ForumController {
 	}
 	
 	//글 하나 보기
-	@RequestMapping(value = "/showOneForum")
-	public String showOne(Model model, Integer id) {
+	@GetMapping(value = "/showOneForum/{id}")
+	public String showOne(@PathVariable("id")String getId,Model model) {
+		Integer id = Integer.parseInt(getId);
 		model.addAttribute("forum", forumService.forumView(id));
 		forumService.updateView(id);
 		// 댓글 list가 계속 보여지기 위해서 view에도 명시해둠
@@ -105,22 +107,27 @@ public class ForumController {
 
 		return "showOneForum";
 	}
-
+	
+	//글 삭제하기
 	@RequestMapping(value = "/delete/{id}")
-	public String deleteOne(@PathVariable("id") Integer id) {
+	public String deleteOne(@PathVariable("id") String getId) {
+		Integer id = Integer.parseInt(getId);
 		forumService.forumDelete(id);
-		return "forumList";
+		return "deleteComplete";
 	}
 	
+	//글 수정페이지로 이동하기
 	@RequestMapping(value = "/modify/{id}")
-	public String modifyForum(@PathVariable("id") Integer id, Model model) {
-		model.addAttribute("board",forumService.forumView(id));
+	public String modifyForum(@PathVariable("id") String getId, Model model) {
+		Integer id = Integer.parseInt(getId);
+		model.addAttribute("forumModify",forumService.forumView(id));
 		return "forumModify";
 	}
 	
+	//글 수정하기
 	@RequestMapping("/update/{id}")
-    public String boardUpdate(@PathVariable("id") Integer id, Forum forum) throws Exception {
-
+    public String boardUpdate(@PathVariable("id") String getId, Forum forum) throws Exception {
+		Integer id = Integer.parseInt(getId);
         String nowTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
 
         Forum updatedForum = forumService.forumView(id);
@@ -131,7 +138,7 @@ public class ForumController {
 
         forumService.write(updatedForum);
 
-        return "forumList";
+        return "forumModifyComplete";
 
     }	
 	

@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -12,27 +12,27 @@
 	<form method="post" action="#">
 		<table cellspacing=1 width=650 border="1" class="table">
 			<tr>
-				<td style="text-align: center;"><b>±Û¹øÈ£</b></td>
+				<td style="text-align: center;"><b>ê¸€ë²ˆí˜¸</b></td>
 				<td>${boardItem.no}</td>
 			</tr>
 			<tr>
-				<td style="text-align: center;"><b>Á¦¸ñ</b></td>
+				<td style="text-align: center;"><b>ì œëª©</b></td>
 				<td>${boardItem.title}</td>
 			</tr>
 			<tr>
-				<td style="text-align: center;"><b>³¯Â¥</b></td>
-				<td>Â÷ÈÄ±¸Çö</td>
+				<td style="text-align: center;"><b>ë‚ ì§œ</b></td>
+				<td>ì°¨í›„êµ¬í˜„</td>
 			</tr>
 			<tr>
-				<td style="text-align: center;"><b>ÀÛ¼ºÀÚ</b></td>
+				<td style="text-align: center;"><b>ì‘ì„±ì</b></td>
 				<td>${boardItem.name}</td>
 			</tr>
 			<tr>
 				<td style="text-align: center;"><b>Hits</b></td>
-				<td>Â÷ÈÄ±¸Çö</td>
+				<td>ì°¨í›„êµ¬í˜„</td>
 			</tr>
 			<tr>
-				<td style="text-align: center;"><b>³»¿ë</b></td>
+				<td style="text-align: center;"><b>ë‚´ìš©</b></td>
 				<td style="height: 250px;">
 				<textarea style="width: 98%; height: 90%;">${boardItem.content}</textarea></td>
 			</tr>
@@ -42,9 +42,9 @@
 			<table width="650">
 				<tr>
 					<td width="630"></td>
-					<td><input type="button" value="¸ñ·Ï">
+					<td><input type="button" value="ëª©ë¡">
 					</td>
-					<td><input type="button" value="¼öÁ¤ÇÏ±â"></td>
+					<td><input type="button" value="ìˆ˜ì •í•˜ê¸°"></td>
 				</tr>
 			</table>
 		</center>
