@@ -14,7 +14,7 @@ public interface ForumService {
 	int updateView(Integer id);
 	void forumDelete(Integer id);
 	Page<Forum> checkKeyword(String keyword, Pageable pageable);
-	
+	String checkWritePage(Forum forum);
 	
 	
 }

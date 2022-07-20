@@ -13,7 +13,7 @@ public class ForumServiceImpl implements ForumService {
 	ForumRepository forumRepository;
 	
 	@Autowired
-	ForumServiceImpl forumServiceImpl;
+	ForumService forumService;
 	
 	@Override
 	public void write(Forum forum) {
@@ -49,11 +49,25 @@ public class ForumServiceImpl implements ForumService {
 	public Page<Forum> checkKeyword(String keyword, Pageable pageable) {
 		Page<Forum> list = null;
 		if(keyword == null) {
-			list = forumServiceImpl.forumListPage(pageable);
+			list = forumService.forumListPage(pageable);
 		} else {
-			list = forumServiceImpl.forumSearchInList(keyword, pageable);
+			list = forumService.forumSearchInList(keyword, pageable);
 		}
 		return null;
+	}
+
+	@Override
+	public String checkWritePage(Forum forum) {
+		String checkResult = "";
+		if(forum.getTitle().isEmpty()) {
+			checkResult = "제목을 입력해주세요";
+		} else if(forum.getContent().isEmpty()) {
+			checkResult = "내용을 입력해주세요";
+		} else {
+			forumService.write(forum);
+			checkResult = "작성이 완료되었습니다.";
+		}
+		return checkResult;
 	}
 
 }

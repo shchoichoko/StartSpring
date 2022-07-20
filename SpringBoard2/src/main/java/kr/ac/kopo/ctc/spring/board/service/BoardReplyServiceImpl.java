@@ -1,44 +1,42 @@
 package kr.ac.kopo.ctc.spring.board.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import kr.ac.kopo.ctc.spring.board.domain.BoardReply;
+import kr.ac.kopo.ctc.spring.board.domain.Forum;
+import kr.ac.kopo.ctc.spring.board.repository.BoardReplyRepository;
+import kr.ac.kopo.ctc.spring.board.repository.ForumRepository;
 
 @Service
 public class BoardReplyServiceImpl implements BoardReplyService {
 
+	@Autowired
+	BoardReplyRepository boardReplyRepository;
+	@Autowired
+	ForumRepository forumRepository;
+	
 	@Override
-	public void test() {
-		System.out.println("BoardItemServiceImpl.test() 메서드 호출");
+	public BoardReply boardReplyWrite(BoardReply boardReply, Integer id) {
+        Optional<Forum> forum = forumRepository.findById(id);
+        boardReply.setForum(forum.get());
+        boardReply.setAuthor(forum.get().getAuthor());
+
+        return boardReplyRepository.save(boardReply);
 	}
 
 	@Override
-	public void testAopBefore() {
-		System.out.println("BoardItemServiceImpl.testAopBefore() 메서드 호출");
-
+	public void replyDelete(BoardReply boardReply) {
+		boardReplyRepository.delete(boardReply);		
 	}
 
 	@Override
-	public void testAopAfter() {
-		System.out.println("BoardItemServiceImpl.testAopAfter() 메서드 호출");
-
+	public List<BoardReply> getReplyBoardID(Integer id) {
+		return boardReplyRepository.findReplyBoardId(id);
 	}
 
-	@Override
-	public String testAopAfterReturning() {
-		System.out.println("BoardItemServiceImpl.testAopAfterReturning() 메서드 호출");
-		return "Success";
-	}
-
-	@Override
-	public void testAopAfterThrowing() {
-		System.out.println("BoardItemServiceImpl.testAopAfterThrowing() 메서드 호출");
-		throw new RuntimeException("runtime exception 발생");
-
-	}
-
-	@Override
-	public void testAopAround() {
-		System.out.println("BoardItemServiceImpl.testAopAround() 메서드 호출");
-
-	}
 
 }

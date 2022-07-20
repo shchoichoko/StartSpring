@@ -24,22 +24,28 @@ import kr.ac.kopo.ctc.spring.board.service.BoardReplyServiceImpl;
 import kr.ac.kopo.ctc.spring.board.service.ForumService;
 
 @Controller
-@RequestMapping(value = "/boardItem")
 public class BoardReplyController {
 
 	@Autowired
 	private BoardReplyService  boardReplyService;
 	@Autowired
-	private BoardReplyRepository boardReplyRepository;
-	@Autowired
 	private ForumService forumService;
 	
-	//글 목록 보기
-	@RequestMapping(value = "/showItems")
-	public String showLists(Model model) {
-		//model.addAttribute("boardItems", boardReplyServiceImpl.showItems());
-		return "showItems";
+	//글보기에서 댓글 작성하기 눌렀을때 실행
+	@RequestMapping(value = "forum/showOneForum/replyWrite")
+	public String replyWrite(@ModelAttribute BoardReply boardReply, Integer id, Model model) {
+		
+		boardReplyService.boardReplyWrite(boardReply, id);
+		List<BoardReply> boardReplyList = boardReplyService.getReplyBoardID(id);
+		model.addAttribute("boardReplyList", boardReplyList);
+		model.addAttribute("forum",forumService.forumView(id));
+		return "showOneForum";
 	}
-
+	
+	@RequestMapping(value = "forum/showOnForum/replyDelete")
+	public String deleteReply(@ModelAttribute BoardReply boardReply) {
+		boardReplyService.replyDelete(boardReply);
+		return "showOneForum";
+	}
 	
 }
