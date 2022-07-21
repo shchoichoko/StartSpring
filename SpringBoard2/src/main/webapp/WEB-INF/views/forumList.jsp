@@ -152,9 +152,8 @@
 			</c:otherwise>
 		</c:choose>
 
-		<form class="d-flex" action="/forum/showforumList" method="get">
-			<input class="form-control me-sm-2" type="text" name="keyword"
-				placeholder="Search">
+		<form class="d-flex" action="/forum/showForumList" method="get">
+			<input class="form-control me-sm-2" type="text" name="keyword" placeholder="Search">
 			<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 		</form>
 

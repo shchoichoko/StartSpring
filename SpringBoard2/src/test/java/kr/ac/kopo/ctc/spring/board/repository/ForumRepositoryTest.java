@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,26 +27,24 @@ class ForumRepositoryTest {
 	BoardReplyRepository boardReplyRepository;
 	
 	
-	//create
+	//create 페이지 확인용
 	@Test
 	void createBoardMember() {
 		Forum forum = new Forum();
-		forum.setAuthor("손흥민2");
-		forumRepository.save(forum);
+		String insertTitle = "제목";
+		String insertAuthor = "글쓴이";
+		String insertContent = "내용임";
 		
-		BoardReply boardReply = new BoardReply();
-		boardReply.setAuthor("홍길동작성");
-		boardReply.setTitle("도적질");
-		boardReply.setContent("동에번쩍 서에번쩍");
-		boardReply.setBoardgroup(forumRepository);
-		boardReplyRepository.save(boardReply);
-		
-		BoardItem bi2 = new BoardItem();
-		bi2.setAuthor("차두리");
-		bi2.setTitle("달리기");
-		bi2.setContent("분노의 질주");
-		bi2.setBoardgroup(bg);
-		bir.save(bi2);
+		for(int i = 0; i < 100; i++) {
+			//int a = (int)(Math.random()*100);
+			insertTitle += i;
+			insertAuthor += i;
+			insertContent += i;
+			forum.setTitle(insertTitle);
+			forum.setAuthor(insertAuthor);
+			forum.setContent(insertContent);
+			forumRepository.save(forum);
+		}
 		 
 	}
 	/*

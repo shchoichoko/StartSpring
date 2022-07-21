@@ -60,6 +60,7 @@ public class ForumController {
 		PageDto pageDto = forumService.getList(cPage, keyword);
 		model.addAttribute("PageDto", pageDto);
 		model.addAttribute("keyword", keyword);
+		System.out.println(cPage);
 		return "forumList";
 	}
 

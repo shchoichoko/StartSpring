@@ -13,7 +13,7 @@ import kr.ac.kopo.ctc.spring.board.repository.ForumRepository;
 @Service
 public class ForumServiceImpl implements ForumService {
 
-	private final int countPerPage = 20;
+	private final int countPerPage = 3;
 	private final int pageSize = 10;
 	
 	@Autowired
@@ -81,13 +81,13 @@ public class ForumServiceImpl implements ForumService {
 		int cPageNo = checkCPage(cPage, countPerPage, keyword);
 		
 		PageRequest pageable = PageRequest.of(cPageNo, countPerPage);
-		Page<Forum> BoardItems = (keyword == null || keyword.equals("") ? 
+		Page<Forum> forum = (keyword == null || keyword.equals("") ? 
 		forumRepository.findAllByOrderByIdDesc(pageable) :
 		forumRepository.findAllByTitleContainingOrderByIdDesc(keyword, pageable));
 		
-		Pagination pagination = makePagination(cPageNo + 1, countPerPage, pageSize, (int) BoardItems.getTotalElements());
+		Pagination pagination = makePagination(cPageNo + 1, countPerPage, pageSize, (int) forum.getTotalElements());
 		
-		PageDto PageDto = new PageDto(BoardItems, pagination);
+		PageDto PageDto = new PageDto(forum, pagination);
 		
 		return PageDto;
 	}
