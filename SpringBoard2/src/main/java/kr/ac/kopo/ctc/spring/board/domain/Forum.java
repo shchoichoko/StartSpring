@@ -111,4 +111,15 @@ public class Forum {
 		this.author = author;
 	}
 
+	public Forum() {
+
+	}
+
+	public Forum(String title, String author, String date, String content, Integer countView) {
+		this.title = title;
+		this.author = author;
+		this.date = date;
+		this.content = content;
+		this.countView = countView;
+	}
 }

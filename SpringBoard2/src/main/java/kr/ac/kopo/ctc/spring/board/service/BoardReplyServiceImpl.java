@@ -38,5 +38,10 @@ public class BoardReplyServiceImpl implements BoardReplyService {
 		return boardReplyRepository.findReplyBoardId(id);
 	}
 
+	@Override
+	public void boardReplyDelete(Integer id) {
+		boardReplyRepository.deleteById(id);
+	}
+
 
 }

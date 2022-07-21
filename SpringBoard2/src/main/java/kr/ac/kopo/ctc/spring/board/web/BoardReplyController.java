@@ -34,17 +34,25 @@ public class BoardReplyController {
 	//글보기에서 댓글 작성하기 눌렀을때 실행
 	@RequestMapping(value = "/replyWrite")
 	public String replyWrite(@ModelAttribute BoardReply boardReply, Integer id, Model model) {
-		
+		boardReplyService.boardReplyWrite(boardReply, id);
 		List<BoardReply> boardReplyList = boardReplyService.getReplyBoardID(id);
 		model.addAttribute("boardReplyList", boardReplyList);
 		model.addAttribute("forum",forumService.forumView(id));
 		return "showOneForum";
 	}
-	
+	/*
 	@RequestMapping(value = "replyDelete")
 	public String deleteReply(@ModelAttribute BoardReply boardReply) {
 		boardReplyService.replyDelete(boardReply);
-		return "showOneForum";
+		return "replyDeleteComplete";
+	}
+	*/
+	// 글 삭제하기
+	@RequestMapping(value = "/replyDelete/{id}")
+	public String deleteOne(@PathVariable("id") String getId) {
+		Integer id = Integer.parseInt(getId);
+		boardReplyService.boardReplyDelete(id);
+		return "deleteComplete";
 	}
 	
 }

@@ -24,5 +24,11 @@ public interface ForumRepository extends JpaRepository<Forum, Integer> {
 	
 	List<Forum> findByAuthor(String author);
 	
+	public long count();
+	public long countByTitleContaining(String keyword);
+	/* 제목 키워드 검색 (id기준 내림차순) */
+	public Page<Forum> findAllByTitleContainingOrderByIdDesc(String keyword, Pageable pageagle);
 	
+	/* 목록 조회 (id기준 내림차순) */
+	public Page<Forum> findAllByOrderByIdDesc(Pageable pageagle);
 }

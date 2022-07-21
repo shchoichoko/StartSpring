@@ -62,16 +62,18 @@
 			<div class="card-body">
 				<form name="comment-form" id="reply" action="/replyWrite" method="post" autocomplete="off">
 					<div class="form-group">
-						<input cols="80" rows="10" type="text" id="content" name="content" class="form-control" placeholder="댓글을 입력해주세요.." aria-label="댓글을 입력해주세요.." aria-describedby="basic-addon2">
+						<input cols="80" rows="10" type="text" id="content" name="content" class="form-control" placeholder="댓글을 입력해주세요.." aria-label="댓글을 입력해주세요..">
 						<input style="width: 10px" type="hidden" id="id" name="id" value="${forum.id}">
 					</div>
 					<br>
 					<button class="btn btn-outline-secondary" type="submit">등록</button>
 				</form>
-				<form id="reply" action="/replyDelete" method="post">
-					<input style="width: 10px" type="hidden" id="id" name="id" value="${forum.id}">
+				<a href="/replyDelete/${forum.id}"><input type="button" value="댓글삭제"></a>
+				
+				<%-- <form id="reply" action="/replyDelete/${forum.id}" method="post">
+					<input style="width: 10px" type="hidden" id="id" name="id" value="${boardReply.replyId}">
 					<button class="btn btn-outline-secondary" type="submit">삭제</button>
-				</form>
+				</form> --%>
 			</div>
 		</div>
 
