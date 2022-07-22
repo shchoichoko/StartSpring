@@ -19,16 +19,16 @@
 
         <div>
             <label>제목</label>
-            <input name="title" type="text" class="form-control" placeholder="제목을 입력하세요.">
+            <input name="title" type="text" class="form-control" placeholder="제목을 입력하세요." required>
 
         </div>
         <div>
             <label>작성자</label>
-            <input name="author" type="text" class="form-control" placeholder="작성자를 입력하세요.">
+            <input name="author" type="text" class="form-control" placeholder="작성자를 입력하세요." required>
         </div>
         <div>
             <label>내용</label>
-            <textarea cols="150" rows="10" id="contents" name="content" class="form-control" placeholder="내용을 입력하세요."></textarea>
+            <textarea cols="150" rows="10" id="contents" name="content" class="form-control" placeholder="내용을 입력하세요." required></textarea>
         </div>
         <input type="hidden" value=0>
         <hr class="my-4">

@@ -25,7 +25,7 @@ import lombok.*;
 public class Forum {
 	
     //부모가 지워지면 자식도 지워짐(orphan removal)
-    @OneToMany(mappedBy = "forum", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "forum", fetch = FetchType.LAZY, orphanRemoval = true)
     private List<BoardReply> boardReply;
 	
 	

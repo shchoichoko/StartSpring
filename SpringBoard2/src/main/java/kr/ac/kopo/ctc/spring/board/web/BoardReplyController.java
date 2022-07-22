@@ -38,7 +38,7 @@ public class BoardReplyController {
 		List<BoardReply> boardReplyList = boardReplyService.getReplyBoardID(id);
 		model.addAttribute("boardReplyList", boardReplyList);
 		model.addAttribute("forum",forumService.forumView(id));
-		return "showOneForum";
+		return "redirect:/forum/showOneForum/" + id;
 	}
 	/*
 	@RequestMapping(value = "replyDelete")
@@ -47,12 +47,13 @@ public class BoardReplyController {
 		return "replyDeleteComplete";
 	}
 	*/
-	// 글 삭제하기
-	@RequestMapping(value = "/replyDelete/{id}")
-	public String deleteOne(@PathVariable("id") String getId) {
-		Integer id = Integer.parseInt(getId);
+	// 댓글 삭제하기
+	@RequestMapping(value = "/replyDelete/{replyId}/{id}")
+	public String deleteOne(@PathVariable("replyId") String getReplyId,@PathVariable("id") String forumId) {
+		Integer id = Integer.parseInt(getReplyId);
+		Integer intForumId = Integer.parseInt(forumId);
 		boardReplyService.boardReplyDelete(id);
-		return "deleteComplete";
+		return "redirect:/forum/showOneForum/" + intForumId;
 	}
-	
+
 }

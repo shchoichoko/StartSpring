@@ -3,6 +3,8 @@
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
@@ -16,7 +18,7 @@
 
 		<br> <br>
 		<form method="post" action="#">
-			<table cellspacing=1 width=650 border="1" class="table">
+			<table cellspacing=1 width=650 border="1" class="table table-bordered">
 				<tr>
 					<td style="text-align: center;"><b>글번호</b></td>
 					<td>${forum.id}</td>
@@ -39,14 +41,14 @@
 				</tr>
 				<tr>
 					<td style="text-align: center;"><b>내용</b></td>
-					<td style="height: 250px;"><textarea
-							style="width: 98%; height: 90%;">${forum.content}</textarea></td>
+					<td style="height: 250px;">
+					<textarea style="width: 98%; height: 90%;">${forum.content}</textarea></td>
 				</tr>
 				<tr>
 			</table>
-			<table width="650">
+			<table width="100%">
 				<tr>
-					<td width="630"></td>
+					<td width="88%"></td>
 					<td><a href="/forum/showForumList"><input type="button" value="목록"></a></td>
 					<td><a href="/forum/modify/${forum.id}"><input type="button" value="수정하기"></a></td>
 					<td><a href="/forum/delete/${forum.id}"><input type="button" value="삭제하기"></a></td>
@@ -67,8 +69,9 @@
 					</div>
 					<br>
 					<button class="btn btn-outline-secondary" type="submit">등록</button>
+					<!--  <a href="/replyDelete/${forum.id}"><input type="button" value="댓글삭제"></a>-->
 				</form>
-				<a href="/replyDelete/${forum.id}"><input type="button" value="댓글삭제"></a>
+					
 				
 				<%-- <form id="reply" action="/replyDelete/${forum.id}" method="post">
 					<input style="width: 10px" type="hidden" id="id" name="id" value="${boardReply.replyId}">
@@ -78,20 +81,21 @@
 		</div>
 
 		<!--  댓글이 append되도록 한다.  -->
-		<table class="table">
+		<table class="table" border = '1' width='800'>
 			<thead>
 				<tr style="text-align: center">
-					<th>작성자</th>
-					<th>댓글내용</th>
-					<th>등록일</th>
+					<th width='100'>작성자</th>
+					<th width='500'>댓글내용</th>
+					<th colspan='2' width='200'>등록일</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="replyList" items="${boardReplyList}">
+				<c:forEach var="replyList" items="${boardReplyLists}">
 					<tr>
 						<td style="text-align: center">${replyList.author}</td>
 						<td style="text-align: center">${replyList.content}</td>
 						<td style="text-align: center">${replyList.date}</td>
+						<td style="text-align: center"><a href="/replyDelete/${replyList.replyId}/${forum.id}"><input type="button" value="댓글삭제"></a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

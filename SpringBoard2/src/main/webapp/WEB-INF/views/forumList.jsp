@@ -18,7 +18,7 @@
 
 		<div class="row">
 			<div class="col">
-				<a href="/forum/goWrite"><button>글 등록</button></a>
+				<a href="/forum/goWrite"><button>글 작성</button></a>
 			</div>
 			<br>
 		</div>
@@ -52,7 +52,7 @@
 				</tbody>
 			</table>
 			 -->
-			<table class="table">
+			<table class="table table-hover">
 				<tr class="table-primary">
 					<th width="10%"><b>번호</b></th>
 					<th width="50%"><b>제목</b></th>

@@ -39,8 +39,9 @@ public class BoardReplyServiceImpl implements BoardReplyService {
 	}
 
 	@Override
-	public void boardReplyDelete(Integer id) {
-		boardReplyRepository.deleteById(id);
+	public void boardReplyDelete(Integer replyId) {
+//		boardReplyRepository.deleteByReplyId(replyId);
+		boardReplyRepository.deleteById(replyId);
 	}
 
 

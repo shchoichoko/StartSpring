@@ -109,9 +109,10 @@ public class ForumController {
 		Integer id = Integer.parseInt(getId);
 		model.addAttribute("forum", forumService.forumView(id));
 		forumService.updateView(id);
+		
 		// 댓글 list가 계속 보여지기 위해서 view에도 명시해둠
 		List<BoardReply> replyLists = boardReplyService.getReplyBoardID(id);
-		model.addAttribute("replyLists", replyLists);
+		model.addAttribute("boardReplyLists", replyLists);
 
 		return "showOneForum";
 	}

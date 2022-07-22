@@ -12,7 +12,7 @@
 
 
   alert("삭제되었습니다.");
-  location.href='/forum/showForumList';
+  location.href='/forum/showForumList/';
 </script>
 </body>
 </html>

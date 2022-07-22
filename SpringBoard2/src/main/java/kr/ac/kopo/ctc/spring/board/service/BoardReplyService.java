@@ -11,6 +11,6 @@ public interface BoardReplyService {
     public void replyDelete(BoardReply boardReply);
     
     public List<BoardReply> getReplyBoardID(Integer id);
-    void boardReplyDelete(Integer id);
+    void boardReplyDelete(Integer replyId);
 
 }

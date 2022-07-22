@@ -20,6 +20,8 @@ public interface BoardReplyRepository extends JpaRepository<BoardReply, Integer>
     @Query("select r from boardReply r where r.forum.id = :id")
     List<BoardReply> findReplyBoardId(@Param("id") Integer id);
 	
+//	List<BoardReply> deleteByReplyId(Integer replyId);
+    
     /*
 	Optional<BoardReply> findOneByAuthor(String author);
 	
@@ -31,7 +33,7 @@ public interface BoardReplyRepository extends JpaRepository<BoardReply, Integer>
 	
 	Page<BoardReply> findByTitleContaining(String title, Pageable pageable);
 	
-	List<BoardReply> deleteById(int id);
+
 	
 	List<BoardReply> findAllByBoardgroup_id(int id);
 	
