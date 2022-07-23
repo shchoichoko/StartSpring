@@ -28,7 +28,6 @@ public class Forum {
     @OneToMany(mappedBy = "forum", fetch = FetchType.LAZY, orphanRemoval = true)
     private List<BoardReply> boardReply;
 	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
