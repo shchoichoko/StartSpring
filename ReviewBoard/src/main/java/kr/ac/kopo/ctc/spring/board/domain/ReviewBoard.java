@@ -1,14 +1,22 @@
 package kr.ac.kopo.ctc.spring.board.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.springframework.stereotype.Component;
 
-@Entity
+@Entity(name="reviewBoard")
 public class ReviewBoard {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private Integer id;
 	@Column
@@ -25,8 +33,16 @@ public class ReviewBoard {
 	private String filename;
 	@Column
 	private String filepath;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "reviewBoard")
+	private List<Reply> reply;
 	
-	
+	public List<Reply> getReply() {
+		return reply;
+	}
+	public void setReply(List<Reply> reply) {
+		this.reply = reply;
+	}	
 	public Integer getId() {
 		return id;
 	}

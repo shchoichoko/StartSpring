@@ -42,8 +42,8 @@ public class BoardItemController {
 	@RequestMapping(value = "/oneView")
 	public String goOneView(Model model, HttpServletRequest request) {
 		String id = request.getParameter("id");
-		List<BoardItem> boardItem = boardItemServiceImpl.showOneView(Integer.parseInt(id));
-		model.addAttribute("boardItem",boardItem.get(0));
+		BoardItem boardItem = boardItemServiceImpl.showOneView(Integer.parseInt(id));
+		model.addAttribute("boardItem",boardItem);
 		return "oneView";
 	}
 	

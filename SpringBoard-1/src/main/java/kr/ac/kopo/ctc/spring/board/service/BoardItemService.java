@@ -13,5 +13,5 @@ public interface BoardItemService {
 	void testAopAfterThrowing();
 	void testAopAround();
 	List<BoardItem> showLists();
-	List<BoardItem> showOneView(Integer id);
+	BoardItem showOneView(Integer id);
 }

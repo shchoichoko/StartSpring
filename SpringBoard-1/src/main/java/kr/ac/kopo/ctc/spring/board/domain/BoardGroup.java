@@ -24,7 +24,7 @@ public class BoardGroup {
 	@Column
 	private String name;
 	@JsonManagedReference
-	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.EAGER, mappedBy="boardgroup" )
+	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY, mappedBy="boardgroup" )
 	private List<BoardItem> boardItems;
 
 	public Integer getId() {

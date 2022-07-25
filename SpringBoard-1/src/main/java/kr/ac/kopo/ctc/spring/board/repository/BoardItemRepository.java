@@ -16,7 +16,7 @@ public interface BoardItemRepository extends JpaRepository<BoardItem, Integer>, 
 	
 	List<BoardItem> findOneByName(String name);
 	
-	List<BoardItem> findAllById(Integer id);
+	//List<BoardItem> findAllById(Integer id);
 	
 	Page<BoardItem> findAllByName(String name, Pageable pageable);
 	

@@ -30,8 +30,7 @@ class BoardGroupRepositoryTest {
 	
 	//create
 	@Test
-	void createBoardMember() {
-
+	void createBoardMember() { 
 		BoardGroup boardGroup = new BoardGroup();
 		boardGroup.setName("손흥민");
 		boardGroupRepository.save(boardGroup);

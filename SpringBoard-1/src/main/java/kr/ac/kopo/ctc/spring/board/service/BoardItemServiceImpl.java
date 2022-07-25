@@ -21,8 +21,8 @@ public class BoardItemServiceImpl implements BoardItemService {
 	}
 	
 	@Override
-	public List<BoardItem> showOneView(Integer id) {
-		List<BoardItem> boardItem = boardItemRepository.findAllById(id);
+	public BoardItem showOneView(Integer id) {
+		BoardItem boardItem = boardItemRepository.findById(id).get();
 		
 		return boardItem;
 	}
