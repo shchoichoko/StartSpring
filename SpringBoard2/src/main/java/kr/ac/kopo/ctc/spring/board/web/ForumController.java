@@ -31,12 +31,6 @@ public class ForumController {
 	@Autowired
 	private BoardReplyService boardReplyService;
 
-	// test 페이지로 보내기
-	@RequestMapping(value = "/hello")
-	public String goHello() {
-		return "hello";
-	}
-
 	// 글 작성 페이지로 보내기
 	@RequestMapping(value = "/goWrite")
 	public String goWrite() {
@@ -64,44 +58,6 @@ public class ForumController {
 		return "forumList";
 	}
 
-	// 보류!
-//	
-//	  @GetMapping(value = {"/showForumList/{searchKeyword}","/showForumList"})
-//	  public String forumList(Model model,
-//	  
-//	  @PageableDefault(page = 0, size = 10, sort = "id", direction =
-//	  Sort.Direction.DESC) Pageable pageable, String searchKeyword) { int pPage = 0; int nPage =0; int countPerPage = 10; Page<Forum> list = null;
-//	  if(searchKeyword == null) { 
-//		  list = forumService.forumListPage(pageable);
-//		  } else { 
-//			  list = forumService.forumSearchInList(searchKeyword, pageable); 
-//		  }
-//	  
-//	  int nowPage = list.getPageable().getPageNumber() +1; 
-//	  int totalBlock = list.getTotalPages(); 
-//	  int startPage = ((nowPage-1)/ countPerPage) * countPerPage + 1; 
-//	  if(startPage == 1) { 
-//		  pPage = 1; 
-//		  } 
-//	  if(startPage > 10) {
-//	  pPage = startPage - countPerPage; 
-//	  }
-//	  
-//	  int endPage = startPage + countPerPage -1;
-//	  if(endPage > totalBlock) {
-//		  endPage = totalBlock; 
-//		  nPage = endPage; 
-//		  } else { 
-//			  nPage = endPage +1; 
-//		  }
-//	  
-//	  model.addAttribute("forumList", list); model.addAttribute("nowPage", nowPage); model.addAttribute("startPage", startPage);
-//	  model.addAttribute("endPage", endPage); model.addAttribute("pPage", pPage);
-//	  model.addAttribute("nPage", nPage); model.addAttribute("pageSize", 10);
-//	  model.addAttribute("nnPage", totalBlock); model.addAttribute("ppPage", 1);
-//	  
-//	  return "forumList"; }
-//	 
 
 	// 글 하나 보기
 	@GetMapping(value = "/showOneForum/{id}")
